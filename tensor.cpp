@@ -150,3 +150,20 @@ Tensor Tensor::view(const vector<size_t>& nueva_forma) {
 Tensor Tensor::apply(const TensorTransform& transformacion) const {
     return transformacion.apply(*this);
 }
+// ... (manten todo el codigo anterior igual y añade esto al final)
+
+void Tensor::mostrar(string nombre_paso) const {
+    cout << "=== " << nombre_paso << " ===" << endl;
+    cout << "Forma: [";
+    for(size_t i = 0; i < dimensiones_.size(); i++) {
+        cout << dimensiones_[i] << (i == dimensiones_.size() - 1 ? "" : ", ");
+    }
+    cout << "]" << endl;
+
+    cout << "Primeros valores: ";
+    size_t limite = (total_elementos_ < 5) ? total_elementos_ : 5;
+    for(size_t i = 0; i < limite; i++) {
+        cout << puntero_datos_[i] << "  ";
+    }
+    cout << "..." << endl << endl;
+}

@@ -8,7 +8,6 @@ using namespace std;
 
 class Tensor;
 
-// Interfaz para transformaciones
 class TensorTransform {
 public:
     virtual Tensor apply(const Tensor& t) const = 0;
@@ -35,7 +34,6 @@ public:
     Tensor(const vector<size_t>& forma, const vector<double>& valores);
     Tensor();
 
-    // Regla de los 5 (Gestion de memoria)
     Tensor(const Tensor& otro);
     Tensor(Tensor&& otro) noexcept;
     Tensor& operator=(const Tensor& otro);
@@ -65,6 +63,9 @@ public:
     vector<size_t> obtener_forma() const { return dimensiones_; }
     size_t obtener_tamano() const { return total_elementos_; }
     double* obtener_datos() const { return puntero_datos_; }
+
+    // Nuevo metodo para ver que esta pasando
+    void mostrar(string nombre_paso) const;
 };
 
 #endif
